@@ -1,0 +1,53 @@
+OOP2 Final - Qt Designer Asal Sayı Uygulaması Şablonu
+Bu belge, OOP2 final sınavında çıkabilecek asal sayı uygulaması sorusunu eksiksiz ve adım adım yapabilmen için hazırlanmıştır. Qt Designer ve PyQt5 bilgin olmasa bile sadece bu adımları takip ederek sınavı başarıyla tamamlayabilirsin.
+
+1️⃣ Qt Designer ile Arayüz Oluşturma
+1. Qt Designer'ı aç
+2. 'Main Window' seçip OK'e tıkla
+3. Aşağıdaki bileşenleri sürükle:
+- QLabel → 'Enter Number' yaz
+- QLineEdit → boş bırak, objectName: inputLine
+- QLabel → 'Status' yaz
+- QLabel → boş bırak, objectName: statusLabel
+- QComboBox → objectName: actionCombo
+   - Seçenek 1: Print the text box
+   - Seçenek 2: Write the file
+- QPushButton → 'RUN' yaz, objectName: runButton
+- QTextEdit → objectName: outputBox
+
+4. Tasarımı 'prime.ui' olarak kaydet
+2️⃣ .ui Dosyasını Python'a Çevirme
+Terminal aç ve aşağıdaki komutu yaz:
+    pyuic5 prime.ui -o prime_ui.py
+Bu komut arayüzü Python koduna çevirir.
+3️⃣ Asal Sayı Hesaplama Fonksiyonu
+def calculate_primes(n):
+    primes = []
+    for num in range(2, n + 1):
+        if all(num % i != 0 for i in range(2, int(num ** 0.5) + 1)):
+            primes.append(num)
+    return primes
+4️⃣ RUN Butonu İçin Fonksiyon
+def run_button_clicked(self):
+    try:
+        number = int(self.inputLine.text())
+        primes = calculate_primes(number)
+
+        if self.actionCombo.currentText() == "Print the text box":
+            self.outputBox.setPlainText(", ".join(map(str, primes)))
+            self.statusLabel.setText("Printed in textbox")
+        else:
+            with open("primes.txt", "w") as f:
+                f.write(", ".join(map(str, primes)))
+            self.statusLabel.setText("Written to file")
+    except ValueError:
+        self.statusLabel.setText("Enter a valid number!")
+5️⃣ Sınavda Akılda Tutman Gerekenler
+- QLabel, QLineEdit, QTextEdit, QPushButton, QComboBox ne işe yarar bil
+- inputLine → kullanıcıdan sayı al
+- outputBox → asal sayıları yaz
+- statusLabel → işlem sonucunu yaz
+- ComboBox'a göre işlem seç
+- try/except ile hatalı giriş kontrolü yap
+- .ui dosyasını py dosyasına çevirmeyi unutma!
+Bu adımları uygulayarak sınavda asal sayı uygulaması sorusunu eksiksiz şekilde çözebilirsin. Benzer soru gelirse, sadece değişken adlarını değiştirmen yeterlidir.
