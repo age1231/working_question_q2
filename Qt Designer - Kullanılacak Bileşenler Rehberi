@@ -1,0 +1,21 @@
+Qt Designer - Kullanılacak Bileşenler Rehberi
+Bu belge, OOP2 Final sınavındaki asal sayı uygulaması için Qt Designer arayüzüne eklemen gereken tüm bileşenleri açık ve düzenli bir şekilde listeler. Her bileşen, Qt Designer'da doğru widget ile temsil edilmelidir.
+🧱 Arayüz Bileşenleri Tablosu
+Amaç	Qt Designer Bileşeni	Görünen Metin (Varsayılan)	objectName (Kodda kullanılacak)
+Kullanıcıdan sayı girişi almak	QLineEdit	(boş)	inputLine
+Giriş etiketini göstermek	QLabel	Enter Number:	label_input
+Durum başlığını göstermek	QLabel	Status:	label_status
+Sonuç durum mesajı (dinamik)	QLabel	(boş)	statusLabel
+İşlem türünü seçtirmek	QComboBox	Print the text box
+Write the file	actionCombo
+İşlemi başlatmak için buton	QPushButton	RUN	runButton
+Asal sayıları görüntülemek	QTextEdit	(boş kutu)	outputBox
+
+🎯 Tavsiyeler:
+- Bileşenleri Widget Box panelinden sürükleyerek yerleştirin.
+- Her bileşenin objectName değerini sağ panelden ayarlayın.
+- QLabel'lar sadece yazı göstermek içindir; veri girilemez.
+- QLineEdit → kullanıcıdan veri almak için; QTextEdit → çıktıyı göstermek için kullanılır.
+- ComboBox içine iki seçenek ekleyin: 'Print the text box' ve 'Write the file'.
+
+Tüm bu bileşenleri doğru yerleştirip objectName'leri uygun şekilde ayarlarsan, Python koduyla bu widget'lara erişip çalıştırman çok kolay olur.
